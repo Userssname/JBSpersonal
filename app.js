@@ -4,6 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+
+const mongoose = require( 'mongoose' );
+mongoose.connect( 'mongodb://localhost/mydb' );
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we are connected!!!")
+});
+
+const commentController = require('./controllers/commentController')
+
+
 var app = express();
 
 // view engine setup
@@ -16,23 +29,26 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
 app.use(function(req,res,next){
   console.log("about to look for routes!!!")
-  console.dir(req.headers)
+  console.dir(req.headers)  //???????????????????????
   next()
 });
 
 
 app.get('/', function(req, res, next) {
-  res.render('index',{title:"CLASSICAL GUITAR"});
+  res.render('index',{title:"DAYS MATTER MANAGER"});
 });
 
 app.get('/griddemo', function(req, res, next) {
   res.render('griddemo',{title:"Grid Demo"});
 });
 
-app.get('/MKNews', function(req, res, next) {
-  res.render('MKNews',{title:"Miloš Karadaglić Returns After a Devastating Hand Injury"});
+app.get('/new', function(req, res, next) {
+  res.render('new',{title:"Create New Days Matter"});
 });
 
 app.use(function(req,res,next){
@@ -41,15 +57,16 @@ app.use(function(req,res,next){
 });
 
 function processFormData(req,res,next){
-  res.render('MKresponse',
-     {title:"MKresponse",coms:req.body.theComments});
+  res.render('matterlist',
+     {title:"My Days Matter",url:req.body.url, coms:req.body.theComments});
 }
 
-app.post('/processform', processFormData);
 
+app.post('/processform', commentController.saveComment)
+
+app.get('/showComments', commentController.getAllComments)
 // app.use('/', indexRouter);  // this is how we use a router to handle the / path
 // but here we are more direct
-
 
 
 // catch 404 and forward to error handler

@@ -1,0 +1,17 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Create New Days Matter</h1>
+        <p>Update page</p>
+    </div>
+
+    <p><img src="images/lute.jpg" width="30%"></p>
+
+    <form method="post" action="/processform">
+        Date:    <input type="text" name="url"> <br>
+        Matters: <textarea name="comment"></textarea>
+        <input type="submit">
+      </form>
+
+
+<%- include('bootfooter') -%>
