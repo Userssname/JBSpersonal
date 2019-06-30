@@ -1,0 +1,14 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>DAYS MATTER MANAGER Profile for <%= profile.userName %></h1>
+        <img src="<%= profile.profilePicURL%>" width="200">
+        <hr>
+        <p> Welcome <%= profile.googlename %>
+            with email <%= profile.googleemail %>
+            You are logged in to DAYS MATTER MANAGER.
+        </p>
+        <p> Last updated on <%= profile.lastUpdate %> </p>
+    </div>
+
+<%- include('bootfooter') -%>

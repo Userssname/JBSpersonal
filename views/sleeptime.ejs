@@ -1,0 +1,47 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+        <h1>Sleep Time Calculator</h1>
+        <p>Demo</p>
+    </div>
+
+    <hr>
+    <h1>Sleep Time Calculator</h1>
+    <h2>Please type in integer time in 24-hour clock</h2>
+    <br>
+    <input type="text" id="wakeup">Wake up time<br>
+    <input type="text" id="fallasleep">Fall asleep time<br>
+    <button onClick="calc()">Calc</button>
+    <button onClick="reset()">Reset</button>
+    sleephour = <label id="sleephour">????</label>
+
+
+
+    <script>
+      function calc(){
+        var w = document.getElementById('wakeup')
+        var f = document.getElementById('fallasleep')
+        var h = document.getElementById('sleephour')
+
+        if (w.value>>f.value) {
+          h.innerText = w.value-f.value
+        }
+        else if(w.value<<f.value){
+          h.innerText = w.value+(24-f.value)
+        }
+        else {
+          h.innerText == 24
+      }
+
+      function reset(){
+        var w = document.getElementById('wakeup')
+        var f = document.getElementById('fallasleep')
+        var h = document.getElementById('sleephour')
+        w.value=""
+        f.value=""
+        h.innerText = "????"
+      }
+    </script>
+
+
+<%- include('bootfooter') -%>
