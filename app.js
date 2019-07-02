@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 //var apikey = require('./config/apikey');
 
+
 // AUTHENTICATION MODULES
 session = require("express-session"),
 bodyParser = require("body-parser"),
@@ -13,8 +14,10 @@ User = require( './models/User' ),
 flash = require('connect-flash')
 // END OF AUTHENTICATION MODULES
 
+const MONGODB_URI = "mongodb://heroku_jkdqqc7j:2e809o2snsapatirooji25m8sr@ds245927.mlab.com:45927/heroku_jkdqqc7j"
 const mongoose = require( 'mongoose' );
-mongoose.connect( 'mongodb://localhost/mydb', { useNewUrlParser: true } );
+mongoose.connect( MONGODB_URI, { useNewUrlParser: true } );
+// mongoose.connect( 'mongodb://localhost/mydb', { useNewUrlParser: true } );
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

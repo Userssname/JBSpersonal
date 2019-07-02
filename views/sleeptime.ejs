@@ -23,14 +23,17 @@
         var f = document.getElementById('fallasleep')
         var h = document.getElementById('sleephour')
 
-        if (w.value>>f.value) {
-          h.innerText = w.value-f.value
+        if (w.value>f.value) {
+          h.innerText = w.value-f.value;
+          console.log(h);
         }
-        else if(w.value<<f.value){
-          h.innerText = w.value+(24-f.value)
+        else if(w.value<f.value){
+          h.innerText = w.value+(24-f.value);
+          console.log(h);
         }
         else {
-          h.innerText == 24
+          h.innerText == 24;
+          console.log(h.innertext);
       }
 
       function reset(){
