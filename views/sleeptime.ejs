@@ -18,33 +18,33 @@
 
 
     <script>
-      function calc(){
-        var w = document.getElementById('wakeup')
-        var f = document.getElementById('fallasleep')
-        var h = document.getElementById('sleephour')
 
-        if (w.value>f.value) {
+      function calc(){
+        var w = document.getElementById('wakeup');
+        var f = document.getElementById('fallasleep');
+        var h = document.getElementById('sleephour');
+
+        if (w.value > f.value){
           h.innerText = w.value-f.value;
-          console.log(h);
         }
-        else if(w.value<f.value){
+        else if(w.value < f.value){
           h.innerText = w.value+(24-f.value);
-          console.log(h);
         }
         else {
-          h.innerText == 24;
-          console.log(h.innertext);
+          h.innerText = 24;
+        } 
       }
 
       function reset(){
-        var w = document.getElementById('wakeup')
-        var f = document.getElementById('fallasleep')
-        var h = document.getElementById('sleephour')
+        var w = document.getElementById('wakeup');
+        var f = document.getElementById('fallasleep');
+        var h = document.getElementById('sleephour');
         w.value=""
         f.value=""
         h.innerText = "????"
       }
     </script>
+
 
 
 <%- include('bootfooter') -%>
