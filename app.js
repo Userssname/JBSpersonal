@@ -23,6 +23,8 @@ db.once('open', function() {
 
 const profileController = require('./controllers/profileController')
 const matterPostController = require('./controllers/matterPostController')
+const recipesPostController = require('./controllers/recipesPostController')
+
 // Authentication
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 // here we set up authentication with passport
@@ -162,6 +164,13 @@ app.use(function(req,res,next){
 app.get('/', function(req, res, next) {
   res.render('index',{title:"DAYS MATTER MANAGER"});
 });
+
+
+app.get('/recipes',recipesPostController.getAllRecipesPosts)
+
+app.post('/recipes',recipesPostController.saveRecipesPost)
+
+app.post('/recipesDelete',recipesPostController.deleteRecipesPost)
 
 
 app.get('/matternew',matterPostController.getAllMatterPosts)

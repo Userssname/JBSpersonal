@@ -1,0 +1,43 @@
+<%- include('bootheader') -%>
+<%- include('menubar') -%>
+    <div class="jumbotron">
+      <h1>Recipes</h1>
+      <p>Find the Recipe You Need</p>
+    </div>
+
+    <p><img src="images/cook.jpg" width="40%"></p>
+
+    <form method="post" action="/recipes">
+      <h4>Name of the dish: </h4><br>
+      <textarea id="post" name="Names"></textarea>
+      <h4>Ingredients in the dish: </h4><br>
+      <textarea id="post" name="Ingredients"></textarea>
+      <h4>Description of how to make the dish: </h4><br>
+      <textarea id="post" name="Description"></textarea>
+      <br>
+      <input type="submit">
+    </form>
+    <hr>
+    
+    <form method="post" action="/recipesDelete">
+        <input type="submit" value="delete marked">
+        <ol>
+        <% for(i = 0; i<posts.length; i++){  %>
+            <li> <%= posts[i].userName %>
+                  <i>
+                 <%= posts[i].createdAt %></\/i> <br>
+                 <% console.dir([posts[i].userId,user._id]) %>
+                 <% if (posts[i].userId.equals(user._id)) { %>
+                     <input type="checkbox" name="delete" value="<%= posts[i]._id %>">
+                 <% } %>
+                 <br>
+                Name: <pre><%= posts[i].Names %></pre>
+                Ingredients:<pre><%= posts[i].Ingredients %></pre>
+                Description: <pre><%= posts[i].Description %></pre>
+             </li>
+        <% } %>
+        </ol>
+
+    </form>
+
+<%- include('bootfooter') -%>
