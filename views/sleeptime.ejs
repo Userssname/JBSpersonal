@@ -2,7 +2,6 @@
 <%- include('menubar') -%>
     <div class="jumbotron">
         <h1>Sleep Time Calculator</h1>
-        <p>Demo</p>
     </div>
 
     <hr>
@@ -24,15 +23,16 @@
         var f = document.getElementById('fallasleep');
         var h = document.getElementById('sleephour');
 
-        if (w.value > f.value){
+
+        if (w.value >> f.value){
           h.innerText = w.value-f.value;
         }
-        else if(w.value < f.value){
-          h.innerText = w.value+(24-f.value);
+        else if(w.value << f.value){
+          h.innerText = 24-(f.value-w.value);
         }
         else {
           h.innerText = 24;
-        } 
+        }
       }
 
       function reset(){
